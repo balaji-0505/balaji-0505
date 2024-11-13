@@ -1,3 +1,4 @@
+// backend/models/Faculty.js
 const mongoose = require('mongoose');
 
 const facultySchema = new mongoose.Schema({
@@ -9,8 +10,8 @@ const facultySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  experience: {
-    type: Number,
+  position: {
+    type: String,
     required: true,
   },
 });

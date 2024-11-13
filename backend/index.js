@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const studentRoutes = require('./routes/studentroutes');
-const facultyController = require('./routes/facultyRoutes');
+const studentRoutes = require('./routes/studentRoutes');
+const facultyRoutes = require('./routes/facultyRoutes'); // Corrected this line
+
 dotenv.config();
 
 const app = express();
@@ -15,7 +16,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-app.use('/api', studentRoutes);
+// Mount the routes
+app.use('/api/students', studentRoutes);  // Organized student routes
+app.use('/api/faculties', facultyRoutes); // Organized faculty routes
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
