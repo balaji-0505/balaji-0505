@@ -1,16 +1,24 @@
 import React from 'react';
-import StudentList from './components/StudentList';
-import FacultyList from './components/FacultyList';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MenuBar from './components/MenuBar'; // Import the MenuBar component
+import Home from './pages/Home';  // Import the Home page
+import About from './pages/About'; // Import the About page
+import Services from './pages/Services'; // Import the Services page
+import Contact from './pages/Contact'; // Import the Contact page
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Student Management System</h1>
-      <StudentList />
-      <h1>Faculty Management System</h1>
-      <FacultyList />
-    </div>
+    <Router>
+      <div className="App">
+        <MenuBar /> {/* This will render the MenuBar on every page */}
+        <Switch>
+          {/* Define routes for each page */}
+          <Route path="/" exact component={Home} /> {/* Home page */}
+          <Route path="/about" component={About} /> {/* About page */}
+          <Route path="/services" component={Services} /> {/* Services page */}
+          <Route path="/contact" component={Contact} /> {/* Contact page */}
+        </Switch>
+      </div>
+    </Router>
   );
-}
-
-export default App;
+};
